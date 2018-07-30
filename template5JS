@@ -1,0 +1,70 @@
+var myApp = angular.module('Demo',[]);
+myApp.controller('RecordCtrl',RecordCtrl);
+function RecordCtrl ($scope) {
+        $scope.newEmail = 'me@example.com';
+        // Historical data
+        $scope.history = [];
+
+        // Default data (can be loaded from a database)
+        $scope.records = [
+            {Username :'Ben', age: 21 , Email:"ben123@gmail.com",include: false },
+            {Username :'hieu', age: 21 , Email:"haha123@gmail.com",include: false },
+            {Username :'Haha', age: 21 , Email:"thua123@gmail.com",include: false }
+        ];
+        $scope.searchText = "";
+        // Delete data
+        $scope.Delete = function (index) {
+            //index1 = $scope.history.indexOf(index);
+             $scope.records.splice(index,1);
+        };
+        //Edit Data
+        $scope.edited = -1;
+        $scope.editedModel = {
+            "Username": "",
+            "age": "",
+            "Email": ""
+        };
+
+        $scope.edit = function (index) {
+            $scope.edited = index;
+        };
+
+        $scope.finishEdit = function (index) {
+            $scope.history[index] = $scope.editedModel;
+            $scope.edited = -1;
+        };
+        // Reset new data model
+        $scope.Reset = function () {
+            $scope.newUserName = '';
+            $scope.newAge = '';
+            $scope.newEmail = '';
+        }
+        $scope.Reset();
+        // Add new data
+        $scope.Add = function () {
+             //checkEmail;
+           if(!$scope.newUserName || $scope.newUserName.length < 8 )
+               alert('Error USerName ! Username > 8 character');
+           else if(!$scope.newAge)
+                alert('error Age');
+            else if(!$scope.newEmail)
+                alert('error Email');
+            // Do nothing if no state is entered (blank)
+            else{
+                $scope.records.push({
+                Username: $scope.newUserName,
+                age: $scope.newAge,
+                Email: $scope.newEmail,
+                include: false
+                });
+            }
+            $scope.Reset();
+        }
+        // Undo action (delete)
+        $scope.Undo = function () {
+            // Add last / most recent historical record to the main records
+            $scope.records.push($scope.history[ $scope.history.length - 1 ]);
+            // Remove last / most recent historical record
+            $scope.history.pop();
+        }
+ }
