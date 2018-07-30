@@ -1,0 +1,35 @@
+.icon_down{
+ 	font-size: 17px;
+}
+.undo{
+	 margin-left: -10px;
+}
+}
+body{
+	font-family: Timesnewroman;
+	font-size: 14px;
+}
+
+label{
+	font-weight: bold;
+	line-height: 23px;
+	float: left;
+}
+input#Username
+{
+	margin-left:10px;
+}
+input#age
+{
+	margin-left:55px;
+}
+input#Email
+{
+	margin-left:45px;
+}
+
+#Username,#age,#Email{
+	margin: 0 0 15px 10px;
+	padding: 5px 0px 0px 5px;
+	margin-left: 20px;
+}
