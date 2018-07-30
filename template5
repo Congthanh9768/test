@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html ng-app="Demo">
+<head>
+    <title>Add / List Data (AngularJS)</title>
+    <link rel="stylesheet"  href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/indext1.css">
+    <style>
+        .list_data { 
+           
+        }
+        table, th, td { border: 2px solid #AAA}
+        th { cursor: pointer ;
+            text-align: center;}
+    </style>
+    
+</head>  
+<body ng-controller="RecordCtrl">
+   <div class="container">
+        <div class="search">
+           <i class="fa fa-search"></i>
+            <input type="text" name="" ng-model="searchText"  size="40" placeholder="search your text">
+             Add:<input type="checkbox" name="" ng-model="hide_form" value="Add">
+        </div>
+       
+        
+        <form ng-submit="Add()" name="myForm" ng-show="hide_form">
+            <h1>Add Data</h1>
+            <div class="field">
+                <label for="Username">UserName: </label>
+                <input id="Username" type="text" placeholder="sype your UserName" maxlength="30" ng-model="newUserName" required>
+                <span class="error" ng-show="myForm.input.$error.required">
+                        Required!
+                  </span>
+            </div>
+            <div class="field">
+                <label for="age">Age: </label>
+                <input id="age" type="number" placeholder="sype your age" min="0" ng-model="newAge" required>
+                <span class="error" ng-show="myForm.input.$error.required">
+                        Required!
+                </span>
+            </div>
+            <div class="field">
+                <label for="Email">Email: </label>
+                <input id="Email" type="email" name="input" placeholder="sype your Email" maxlength="40" ng-model="newEmail" required>
+                 <span class="error" ng-show="myForm.input.$error.required">
+                        Required!
+                  </span>
+                  <span class="error" ng-show="myForm.input.$error.email">
+                         Not a valid email!
+                  </span>
+                  <br>
+                  <br>  
+            </div>
+            <div class="action">
+                <button type="submit" class="btn btn-primary">Add</button>
+                <button ng-click="Reset()" class="btn btn-primary">Reset</button>
+            </div>
+        </form>
+    </div>
+    
+    <div class="container">
+            <h1>List Data</h1>
+            <table align="center">
+                <thead>
+                    <tr>
+                        
+                        <th ng-click="type = 'UserName'; reverse = !reverse">UserName</th>
+                        <th ng-click="type = 'age'; reverse = !reverse">age</th>
+                        <th ng-click="type = 'Email'; reverse = !reverse">Email</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="record in records | orderBy:type:reverse | filter:searchText"">
+                        
+                        <td ng-hide="edited === $index">{{record.Username | uppercase}}</td>
+                        <td ng-hide="edited === $index">{{record.age }}</td>
+                        <td ng-hide="edited === $index">{{record.Email }}</td>
+                        <td ng-hide="edited === $index">
+                            <button ng-click="edit($index)">Edit</button>
+                            <button ng-click="Delete($index)">Detele</button>
+                        </td>
+
+                        <td ng-show="edited === $index"><input type="text" ng-model="editedModel.Username"></td>
+                        <td ng-show="edited === $index"><input type="number" ng-model="editedModel.age"></td>
+                        <td ng-show="edited === $index"><input type="email" ng-model="editedModel.Email"></td>
+                        <td ng-show="edited === $index">
+                            <button ng-click="finishEdit($index, editedModel)">Save</button>
+                            <button ng-click="Delete($index)">Detele</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-offset-6 col-md-offset-4">
+                            <button ng-show="history.length > 0" ng-click="Undo()" class="undo" size="15">Undo Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>      
+    </div>  
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.32/angular.min.js"></script>
+<script type="text/javascript" src="js/stype.js"></script>
+</body>
+
+</html>
