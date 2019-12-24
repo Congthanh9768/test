@@ -10,6 +10,8 @@ import java.util.Scanner;
 public class GiaiPT2 {
     //hahaha
     //sadfsaf
+
+    //àdsaf
     @SuppressWarnings("empty-statement")
     public static void main(String[] args) {
        float a;
