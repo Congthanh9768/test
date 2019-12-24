@@ -8,7 +8,7 @@ import static java.lang.Math.sqrt;
 import java.util.Scanner;
 
 public class GiaiPT2 {
-
+//sfdsafdasdf
     @SuppressWarnings("empty-statement")
     public static void main(String[] args) {
        float a;
