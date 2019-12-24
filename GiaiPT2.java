@@ -11,6 +11,8 @@ public class GiaiPT2 {
     //hahaha
     //sadfsaf
 
+
+// chúng ta là c=cua nhau
     //àdsaf
     @SuppressWarnings("empty-statement")
     public static void main(String[] args) {
