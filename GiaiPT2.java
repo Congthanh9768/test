@@ -8,7 +8,13 @@ import static java.lang.Math.sqrt;
 import java.util.Scanner;
 
 public class GiaiPT2 {
+<<<<<<< Updated upstream
 //sfdsafdasdf
+=======
+
+
+//anhcong9768
+>>>>>>> Stashed changes
     @SuppressWarnings("empty-statement")
     public static void main(String[] args) {
        float a;
